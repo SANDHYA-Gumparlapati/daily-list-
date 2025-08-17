@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8">
+<title>Mini To-Do</title>
+<h1>✅ Mini To-Do</h1>
+<input id=i placeholder="Add a task…"><button onclick="a()">Add</button>
+<ul id=u></ul>
+<p style="color:#666;font:14px/1.4 system-ui">Tip: click a task to remove it.</p>
+<script>
+let t=JSON.parse(localStorage.t||"[]"),u=document.getElementById("u"),i=document.getElementById("i");
+function r(){u.innerHTML="";t.forEach((x,k)=>{let li=document.createElement("li");li.textContent=x;
+li.style.cursor="pointer";li.onclick=()=>{t.splice(k,1);s()};u.appendChild(li)})}
+function s(){localStorage.t=JSON.stringify(t);r()}
+function a(){let v=i.value.trim();if(!v)return;t.push(v);i.value="";s()}
+r();
+</script>
